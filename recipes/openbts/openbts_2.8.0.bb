@@ -7,7 +7,7 @@ SRC_URI = "file://openbts-2.8.0.tar.gz"
 RDEPENDS ="libosip2 ortp asterisk"
 S = "${WORKDIR}/openbts-2.8.0"
 PACKAGES = "${PN} ${PN}-dev ${PN}-dbg"
-FILES_${PN} += "/usr/locale/share"
+FILES_${PN} += "${datadir}/OpenBTS"
 inherit autotools pkgconfig gettext
 do_configure () {
     autoreconf -i

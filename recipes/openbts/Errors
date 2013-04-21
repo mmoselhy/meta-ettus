@@ -1,0 +1,51 @@
+===========================================================================================================================================================
+**********************************************************************************************************************
+ERROR TYPE 1 :
+--------------
+ite.a -lpthread /run/media/mmoselhy/OE/poky/danny/poky/build/tmp/sysroots/usrp-e1xx/usr/lib/libstdc++.so -lm -Wl,-rpath -Wl,/run/media/mmoselhy/OE/poky/danny/poky/build/tmp/sysroots/usrp-e1xx/usr/lib
+| ../sqlite3/.libs/libsqlite.a(sqlite3.o): In function `unixDlClose':
+| sqlite3.c:(.text+0x3e78): undefined reference to `dlclose'
+| ../sqlite3/.libs/libsqlite.a(sqlite3.o): In function `unixDlSym':
+| sqlite3.c:(.text+0x3e84): undefined reference to `dlsym'
+| ../sqlite3/.libs/libsqlite.a(sqlite3.o): In function `unixDlOpen':
+| sqlite3.c:(.text+0x3e90): undefined reference to `dlopen'
+| ../sqlite3/.libs/libsqlite.a(sqlite3.o): In function `unixDlError':
+| sqlite3.c:(.text+0x177c4): undefined reference to `dlerror'
+| collect2: error: ld returned 1 exit status
+
+
+
+===========================
+
+Open Makefile the errored directory then add to LD_FLAG variable the -ldl 
+example: 
+
+open /run/media/mmoselhy/OE/poky/danny/poky/build/tmp/work/armv7a-vfp-neon-poky-linux-gnueabi/openbts/P2.8.0Opelousas-r1/openbts-P2.8.0Opelousas/CommonLibs/Makefile
+and replace 
+LDFLAGS = -Wl,-O1 -Wl,--hash-style=gnu -Wl,--as-needed
+BY
+LDFLAGS = -Wl,-O1 -Wl,-ldl,--hash-style=gnu -Wl,--as-needed
+
+
+then run >> bitbake -b openbts_P2.8.0Opelousas.bb
+
+==========================================================================================================================================================
+ERROR TYPE 2 :
+***********************************************************************************************************************
+Any error like :
+ rnrad1Core.cpp: In function 'rad1LoadStatus rad1LoadFirmwareNth(int, const char*, bool, libusb_context*)':
+| rnrad1Core.cpp:433:25: error: 'R_OK' was not declared in this scope
+| rnrad1Core.cpp:433:29: error: 'access' was not declared in this scope
+| rnrad1Core.cpp:467:12: error: 'sleep' was not declared in this scope
+| rnrad1Core.cpp: In function 'bool rad1_load_standard_bits(int, bool, std::string, std::string, libusb_context*)':
+| rnrad1Core.cpp:524:25: error: 'R_OK' was not declared in this scope
+| rnrad1Core.cpp:524:29: error: 'access' was not declared in this scope
+| rnrad1Core.cpp: In member function 'bool rnrad1Core::writeEeprom(int, int, std::string)':
+| rnrad1Core.cpp:817:20: error: 'usleep' was not declared in this scope
+
+===========================
+
+just open the cpp file and add #include<unistd.h>
+
+then run >> bitbake -b openbts_P2.8.0Opelousas.bb
+==================================================================================================================================================================

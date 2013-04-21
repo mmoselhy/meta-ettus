@@ -9,11 +9,11 @@ SRC_URI_append_usrp-e1xx ="\
         file://0001-net-eth.c-Restore-previous-behavior-for-eth_getenv_e.patch \
         file://0002-OMAP3-overo-Set-default-mpurate-to-720-use-for-usrp-.patch \
         file://0001-Revert-armv7-disable-L2-cache-in-cleanup_before_linu.patch \
-	file://2011.12/0006-OMAP-MMC-Add-delay-before-waiting-for-status.patch \
-        file://2011.12/0007-config-Always-use-GNU-ld.patch \
-	file://2011.12/0010-OMAP3-Correct-get_sdr_cs_offset-mask.patch \
-        file://2011.12/0011-ext2load-increase-read-speed.patch \
-        file://2011.12/0012-ext4fs-ls-load-support.patch \
+	file://0006-OMAP-MMC-Add-delay-before-waiting-for-status.patch \
+        file://0007-config-Always-use-GNU-ld.patch \
+	file://0010-OMAP3-Correct-get_sdr_cs_offset-mask.patch \
+        file://0011-ext2load-increase-read-speed.patch \
+        file://0012-ext4fs-ls-load-support.patch \
         "
 
 SRC_URI[md5sum] = "7f29b9f6da44d6e46e988e7561fd1d5f"
